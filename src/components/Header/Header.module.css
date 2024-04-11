@@ -1,0 +1,42 @@
+.main-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+}
+
+#title {
+  display: flex;
+  gap: 0.2rem;
+  align-items: center;
+}
+
+#title img {
+  width: 2.5rem;
+  height: 2.5rem;
+  object-fit: contain;
+}
+
+h1 {
+  font-size: 1.5rem;
+  background: #60D6D8;
+  background: linear-gradient(to right, #60D6D8 30%, #d57aff 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+@media (min-width: 896px) {
+  .main-header {
+    padding: 1rem 5%;
+  }
+
+  #title img {
+    width: 3.5rem;
+    height: 3.5rem;
+  }
+
+  h1 {
+    font-size: 2rem;
+  }
+  
+}

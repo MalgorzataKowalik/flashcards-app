@@ -1,7 +1,14 @@
+import Header from "./components/Header/Header";
+
 function App() {
   return (
     <>
-      <h1>You got this 💪</h1>
+      <Header/>
+      <main>
+        <section>
+          <p>Pick collection to start</p>
+        </section>
+      </main>
     </>
   );
 }
