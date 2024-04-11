@@ -1,0 +1,42 @@
+.collection {
+  width: 70%;
+  height: 48px;
+  padding: 0.5rem;
+  background: linear-gradient(#1b1b1b, #1b1b1b) padding-box, linear-gradient(to right, #60D6D8 30%, #d57aff 100%) border-box;
+  border: 2px solid transparent;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.collection:hover {
+  background: linear-gradient(to right, #60D6D8 30%, #d57aff 100%) border-box;
+}
+
+.collection p {
+  text-align: center;
+  font-size: 0.9rem;
+  word-break: break-word;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.collection:hover p {
+  color: #1b1b1b;
+}
+
+@media (min-width: 896px) {
+  .collection {
+    width: 150px;
+    height: 150px;
+  }
+
+  .collection p {
+    font-size: 1rem;
+    -webkit-line-clamp: 5;
+  }
+}
