@@ -1,0 +1,17 @@
+.section {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  align-content: center;
+  gap: 1rem
+}
+
+.section ul {
+  padding-inline-start: 0;
+  margin: 0 0.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5rem
+}

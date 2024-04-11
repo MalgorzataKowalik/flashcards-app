@@ -1,3 +1,4 @@
+import CardsSection from "./components/CardsSection/CardsSection";
 import Header from "./components/Header/Header";
 
 function App() {
@@ -5,9 +6,7 @@ function App() {
     <>
       <Header/>
       <main>
-        <section>
-          <p>Pick collection to start</p>
-        </section>
+        <CardsSection/>
       </main>
     </>
   );
