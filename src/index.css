@@ -7,7 +7,7 @@
 body {
   margin: 0;
   font-family: 'Raleway', sans-serif;
-  background: linear-gradient(#1b1b1b, #2f3d3d);
+  background: #1b1b1b;
   color: #60D6D8;
   min-height: 100vh;
 }
