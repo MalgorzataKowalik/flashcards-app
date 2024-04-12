@@ -3,6 +3,7 @@
   height: 80vw;
   background-color: #60D6D8;
   color: #1b1b1b;
+  border-radius: 0.5rem;
 }
 
 .card>div {
@@ -12,6 +13,7 @@
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
+  border-radius: 0.5rem;
 }
 
 .question {
