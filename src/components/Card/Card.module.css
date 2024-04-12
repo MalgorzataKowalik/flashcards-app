@@ -18,6 +18,12 @@
   cursor: pointer;
 }
 
+.counter {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .card h3 {
   text-align: center;
   font-size: 1.3rem;
@@ -64,7 +70,7 @@
     height: 45vh;
   }
 
-  .question h3 {
+  .card h3 {
     -webkit-line-clamp: 4;
   }
 

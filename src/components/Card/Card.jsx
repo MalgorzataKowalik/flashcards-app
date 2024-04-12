@@ -1,13 +1,34 @@
-import { useState } from 'react'
-import { useSelector } from 'react-redux'
+import { useEffect, useState } from 'react'
+import { useDispatch, useSelector } from "react-redux";
 import styles from './Card.module.css'
 import { FaCheckCircle, FaTimesCircle } from "react-icons/fa";
+import { stageActions } from '../../store/stage-slice';
 
 const Card = () => {
+  const dispatch = useDispatch()
   const selectedCollection = useSelector(state => state.stage.selectedCollection)
   const [currentCardIndex, setCurrentCardIndex] = useState(0)
   const [cardState, setCardState] = useState('question')
-  const [result, setResult] = useState(0)
+  const [score, setScore] = useState(0)
+  const [wrongAnswersCollection, setWrongAnswersCollection] = useState({
+    id: 'temp',
+    title: 'Wrong answers',
+    cards: []
+  })
+
+  useEffect(() => {
+    if (currentCardIndex === selectedCollection.cards.length) {
+      dispatch(stageActions.setResultStage({
+        score: score,
+        totalNumber: selectedCollection.cards.length,
+        wrongAnswers: wrongAnswersCollection
+      }))
+    }
+  }, [currentCardIndex])
+
+  if (currentCardIndex === selectedCollection.cards.length) {
+    return
+  }
 
   const currentCard = selectedCollection.cards[currentCardIndex]
   const counterText = `${(currentCardIndex + 1)} / ${selectedCollection.cards.length}`
@@ -17,18 +38,31 @@ const Card = () => {
   }
 
   const clickAnswerHandler = (isCorrect) => {
-    if (currentCardIndex + 1 < selectedCollection.cards.length) {
-      isCorrect && setResult(prev => prev + 1)
-      setCurrentCardIndex(prev => prev + 1)
-      setCardState('question')
+    if (isCorrect) {
+      console.log('prev score: ', score)
+      setScore(prev => prev + 1)
     } else {
-      //set results stage
+      setWrongAnswersCollection(prev => {
+        return {
+          ...prev,
+          cards: [
+            ...prev.cards,
+            currentCard
+          ]
+        }
+      })
     }
+    
+      setCardState('question')
+      setCurrentCardIndex(prev => prev + 1)
   }
 
   let content = (
     <div onClick={clickQuestionHandler} className={styles.question}>
-      <p>{counterText}</p>
+      <p className={styles.counter}>
+        <span>{counterText}</span>
+        <span>QUESTION:</span>
+      </p>
       <h3>{currentCard.question}</h3>
       <p>Click to show the answer.</p>
     </div>
@@ -37,7 +71,10 @@ const Card = () => {
   if (cardState === 'answer') {
     content = (
       <div>
-        <p>{counterText}</p>
+        <p className={styles.counter}>
+          <span>{counterText}</span>
+          <span>ANSWER:</span>
+        </p>
         <h3>{currentCard.answer}</h3>
         <p className={styles['answer-check']}>
           <span>Did you know the answer?</span>

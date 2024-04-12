@@ -2,9 +2,11 @@ import { useState, useEffect } from 'react'
 import { useSelector } from "react-redux";
 import DefaultCollectionsSection from "./components/DefaultCollectionsSection/DefaultCollectionsSection";
 import Header from "./components/Header/Header";
-import CardSection from './components/CardSection/CardSection'
+import Card from './components/Card/Card'
 import { stages } from './store/stage-slice'
 import { baseUrl } from './helpers/consts'
+import SectionWithBack from './components/UI/SectionWithBack/SectionWithBack';
+import Result from './components/Result/Result';
 
 function App() {
   const stageData = useSelector(state => state.stage)
@@ -36,7 +38,9 @@ function App() {
 
   let mainContent = <DefaultCollectionsSection status={defaultCollectionsStatus} collections={defaultCollections}/>
   if (stageData.stage === stages.cards) {
-    mainContent = <CardSection/>
+    mainContent = <SectionWithBack><Card/></SectionWithBack>
+  } else if (stageData.stage === stages.result) {
+    mainContent = <SectionWithBack><Result/></SectionWithBack>
   }
 
   return (

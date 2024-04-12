@@ -9,7 +9,11 @@ export const stages = {
 const initialState = {
   stage: stages.default,
   selectedCollection: null,
-  score: null
+  result: {
+    score: 0,
+    totalNumber: 0,
+    wrongAnswers: []
+  }
 }
 
 const stageSlice = createSlice({
@@ -19,13 +23,18 @@ const stageSlice = createSlice({
     setDefaultStage(state) {
       state.stage = initialState.stage
       state.selectedCollection = initialState.selectedCollection
-      state.score = initialState.score
+      state.result = initialState.result
     },
     setCardsStage(state, action) {
-      state.stage = stages.cards
       state.selectedCollection = action.payload
+      state.stage = stages.cards
     },
-    setResultStage(state) {
+    setResultStage(state, action) {
+      state.result = {
+        score: action.payload.score,
+        totalNumber: action.payload.totalNumber,
+        wrongAnswers: action.payload.wrongAnswers
+      }
       state.stage = stages.result
     }
   }
