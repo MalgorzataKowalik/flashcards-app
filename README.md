@@ -1,6 +1,6 @@
 # flashcards app
 application for learning with flashcards
-## :point_right: [check app here]([http://handlebarsjs.com/](https://malgorzatakowalik.github.io/flashcards-app/)) :point_left:
+## :point_right: [check app here](https://malgorzatakowalik.github.io/flashcards-app/) :point_left:
 
 ## Features:
 - default flashcards collections for anonymous user
