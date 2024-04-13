@@ -19,8 +19,8 @@
 
 h1 {
   font-size: 1.5rem;
-  background: #60D6D8;
-  background: linear-gradient(to right, #60D6D8 30%, #d57aff 100%);
+  background: var(--color-cyan);
+  background: linear-gradient(to right, var(--color-cyan) 30%, var(--color-violet) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }

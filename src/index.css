@@ -6,11 +6,17 @@
   box-sizing: border-box;
 }
 
+:root {
+  font-family: 'Raleway', sans-serif;
+  --color-cyan: #60d6d8;
+  --color-violet: #d57aff;
+  --color-primary-dark: #1b1b1b;
+}
+
 body {
   margin: 0;
-  font-family: 'Raleway', sans-serif;
-  background: #1b1b1b;
-  color: #60D6D8;
+  background: var(--color-primary-dark);
+  color: var(--color-cyan);
   min-height: 100vh;
 }
 
