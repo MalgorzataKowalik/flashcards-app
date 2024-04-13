@@ -1,27 +1,27 @@
 .button {
   padding: 0.5rem 1rem;
   /* TODO: variavles for colors */
-  background: linear-gradient(#1b1b1b, #1b1b1b) padding-box, linear-gradient(to right, #60D6D8 30%, #d57aff 100%) border-box;
+  background: linear-gradient(var(--color-primary-dark), var(--color-primary-dark)) padding-box, linear-gradient(to right, var(--color-cyan) 30%, var(--color-violet) 100%) border-box;
   border-radius: 2rem;
   border: 2px solid transparent;
   cursor: pointer;
 }
 
 .button:hover {
-  background: linear-gradient(to right, #60D6D8 30%, #d57aff 100%) border-box;
+  background: linear-gradient(to right, var(--color-cyan) 30%, var(--color-violet) 100%) border-box;
 }
 
 .button span {
   font-family: 'Raleway', sans-serif;
   font-weight: 600;
-  background: #60D6D8;
-  background: linear-gradient(to right, #60D6D8 30%, #d57aff 100%);
+  background: var(--color-cyan);
+  background: linear-gradient(to right, var(--color-cyan) 30%, var(--color-violet) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
 .button:hover span {
-  background: #1b1b1b;
+  background: var(--color-primary-dark);
   -webkit-background-clip: text;
 }
 

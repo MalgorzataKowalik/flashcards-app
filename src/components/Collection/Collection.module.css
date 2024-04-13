@@ -2,7 +2,7 @@
   width: 70%;
   height: 48px;
   padding: 0.5rem;
-  background: linear-gradient(#1b1b1b, #1b1b1b) padding-box, linear-gradient(to right, #60D6D8 30%, #d57aff 100%) border-box;
+  background: linear-gradient(var(--color-primary-dark), var(--color-primary-dark)) padding-box, linear-gradient(to right, var(--color-cyan) 30%, var(--color-violet) 100%) border-box;
   border: 2px solid transparent;
   cursor: pointer;
   display: flex;
@@ -11,7 +11,7 @@
 }
 
 .collection:hover {
-  background: linear-gradient(to right, #60D6D8 30%, #d57aff 100%) border-box;
+  background: linear-gradient(to right, var(--color-cyan) 30%, var(--color-violet) 100%) border-box;
 }
 
 .collection p {
@@ -26,7 +26,7 @@
 }
 
 .collection:hover p {
-  color: #1b1b1b;
+  color: var(--color-primary-dark);
 }
 
 @media (min-width: 896px) {
