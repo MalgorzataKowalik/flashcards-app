@@ -5,8 +5,8 @@ import LoginPage from "./components/Pages/LoginPage/LoginPage";
 
 function App() {
   const router = createBrowserRouter([
-    {path: '/', element: <HomePage/>},
-    {path: '/login', element: <LoginPage/>}
+    {path: '/flashcards-app/', element: <HomePage/>},
+    {path: '/flashcards-app/login', element: <LoginPage/>}
   ])
 
   return (
