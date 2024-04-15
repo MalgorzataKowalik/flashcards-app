@@ -1,14 +1,7 @@
-import styles from './Button.module.css'
-
-const Button = ({children, ...props}) => {
+export default function Button({ onClick, children, as: Component = 'button', ...rest }) {
   return (
-    <button className={`${styles.button} ${props.className || ''}`} {...props}>
-      <span>
-        {children}
-      </span>
-    </button>
-  )
-}
-
-export default Button
-
+    <Component onClick={onClick} className="button" {...rest}>
+      {children}
+    </Component>
+  );
+};

@@ -1,6 +1,5 @@
 .button {
   padding: 0.5rem 1rem;
-  /* TODO: variavles for colors */
   background: linear-gradient(var(--color-primary-dark), var(--color-primary-dark)) padding-box, linear-gradient(to right, var(--color-cyan) 30%, var(--color-violet) 100%) border-box;
   border-radius: 2rem;
   border: 2px solid transparent;

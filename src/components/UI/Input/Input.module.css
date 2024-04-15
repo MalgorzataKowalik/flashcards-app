@@ -1,0 +1,41 @@
+.input label {
+  display: block;
+  font-size: 0.8rem;
+  margin-bottom: 0.2rem;
+  color: var(--color-cyan-40);
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+.input input {
+  display: block;
+  width: 100%;
+  max-width: 15rem;
+  padding: 0.5rem;
+  font-size: 1rem;
+  border-radius: 4px;
+  border: 1px solid transparent;
+  background-color: var(--color-cyan-10);
+  color: var(--color-cyan);
+}
+
+.input input:focus,
+.input input:-webkit-autofill,
+.input input:-webkit-autofill:hover, 
+.input input:-webkit-autofill:focus {
+  border: 1px solid var(--color-cyan);
+  -webkit-text-fill-color: var(--color-cyan);
+  outline: none;
+  transition: background-color 5000s ease-in-out 0s;
+}
+
+.error {
+  color: var(--color-red);
+  font-size: 0.8rem;
+  height: 2rem;
+  padding: 0.5rem 0;
+}
+
+.error p {
+  margin: 0;
+}

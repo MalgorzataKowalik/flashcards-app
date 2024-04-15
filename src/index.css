@@ -9,7 +9,10 @@
 :root {
   font-family: 'Raleway', sans-serif;
   --color-cyan: #60d6d8;
+  --color-cyan-10: #60d6d81a;
+  --color-cyan-40: #60d6d866;
   --color-violet: #d57aff;
+  --color-red: #ff7a7a;
   --color-primary-dark: #1b1b1b;
 }
 
@@ -18,8 +21,4 @@ body {
   background: var(--color-primary-dark);
   color: var(--color-cyan);
   min-height: 100vh;
-}
-
-main {
-  margin: 2rem auto
 }
