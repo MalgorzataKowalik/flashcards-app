@@ -39,7 +39,6 @@ const Card = () => {
 
   const clickAnswerHandler = (isCorrect) => {
     if (isCorrect) {
-      console.log('prev score: ', score)
       setScore(prev => prev + 1)
     } else {
       setWrongAnswersCollection(prev => {
