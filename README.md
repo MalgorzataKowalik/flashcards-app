@@ -7,8 +7,8 @@ application for learning with flashcards
 - possibility of repeating questions to which the user did not know the answers
 
 ## Upcoming features:
-- account creating and logging in
-- possibility od adding custom collections
+- account creating and logging in (work in progress)
+- possibility of adding custom collections
 - custom backend
 
 ## Technologies:
