@@ -10,7 +10,7 @@
 .input input {
   display: block;
   width: 100%;
-  max-width: 15rem;
+  width: 15rem;
   padding: 0.5rem;
   font-size: 1rem;
   border-radius: 4px;
@@ -32,10 +32,12 @@
 .error {
   color: var(--color-red);
   font-size: 0.8rem;
-  height: 2rem;
   padding: 0.5rem 0;
 }
 
 .error p {
   margin: 0;
+  width: 15rem;
+  display: flex;
+  flex-direction: column;
 }

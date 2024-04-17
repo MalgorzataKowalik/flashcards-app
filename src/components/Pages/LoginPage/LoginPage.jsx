@@ -2,9 +2,8 @@ import Header from "../../Header/Header";
 import Input from "../../UI/Input/Input";
 import StyledButton from "../../UI/Button/StyledButton";
 import styles from './LoginPage.module.css'
-import useInput from "../../../utils/hooks/useInput";
-import { isNotEmptyString } from "../../../utils/validation";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 function LoginPage() {
   const [eneteredLogin, setEnteredLogin] = useState('')
@@ -20,7 +19,7 @@ function LoginPage() {
 
   function submitHandler(event) {
     event.preventDefault()
-    //TODO: send logi requst
+    //TODO: send login requst
   }
 
   return (
@@ -37,8 +36,7 @@ function LoginPage() {
           isValid={true}
           onChange={changeLoginHandler}
           value={eneteredLogin}
-          required
-          errorText="Please enter a valid email address"/>
+          required/>
         <Input
           id="password"
           name="password"
@@ -47,12 +45,15 @@ function LoginPage() {
           isValid={true}
           onChange={changePasswordHandler}
           value={enteredPassword}
-          required
-          errorText="Please enter a valid password"/>
+          required/>
         </div>
 
         <StyledButton>Login</StyledButton>
-        <p>New to flashcards? Create an account.</p>
+        <p className={styles["create-account"]}>
+          <span>New to flashcards?</span>
+          <Link to="/flashcards-app/create-account">Create an account.</Link>
+        </p>
+        
       </form>
     </>
   );

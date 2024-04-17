@@ -1,21 +1,28 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
+import { isNotEmptyString } from "../validation"
 
 export default function useInput(defaultValue, validatorFunction) {
   const [enteredValue, setEnteredValue] = useState(defaultValue)
   const [valueIsValid, setValueIsValid] = useState(true)
+  const [errorMessage, setErrorMessage] = useState('')
 
   function changeHandler(event) {
     setEnteredValue(event.target.value)
-    setValueIsValid(true)
+    setErrorMessage('')
   }
 
   function blurHandler() {
-    setValueIsValid(validatorFunction(enteredValue))
+    setErrorMessage(validatorFunction(enteredValue))
   }
+
+  useEffect(() => {
+    setValueIsValid(!isNotEmptyString(errorMessage))
+  }, [errorMessage])
 
   return {
     enteredValue,
     valueIsValid,
+    errorMessage,
     changeHandler,
     blurHandler
   }
