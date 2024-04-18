@@ -1,0 +1,27 @@
+.modal {
+  background-color: var(--color-cyan-light);
+  color: var(--color-cyan-dark);
+  border-radius: 6px;
+  border: none;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
+  padding: 1rem 1.5rem;
+  width: 80%;
+  max-width: 40rem;
+  margin: 5rem auto;
+}
+
+.modal::backdrop {
+  background-color: rgba(0, 0, 0, 0.55);
+}
+
+.modal-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  gap: 1rem;
+}
+
+.modal p {
+  font-size: 1.5rem;
+}

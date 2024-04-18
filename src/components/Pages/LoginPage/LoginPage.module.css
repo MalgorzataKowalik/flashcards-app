@@ -5,3 +5,17 @@
   align-items: center;
   gap: 1rem;
 }
+
+.create-account span {
+  display: block;
+  margin: 1rem 0 0.5rem
+}
+
+.create-account a {
+  text-decoration: none;
+  color: var(--color-violet)
+}
+
+.create-account a:hover {
+  text-decoration: underline
+}
