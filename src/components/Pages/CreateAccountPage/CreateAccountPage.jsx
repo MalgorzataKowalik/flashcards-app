@@ -1,11 +1,13 @@
 import Header from "../../Header/Header";
 import Input from "../../UI/Input/Input";
 import StyledButton from "../../UI/Button/StyledButton";
+import Modal from "../../UI/Modal/Modal";
 import styles from './CreateAccountPage.module.css'
 import { baseUrl } from "../../../utils/consts";
 import useInput from "../../../utils/hooks/useInput";
-import { getInvalidNameError, getInvalidPasswordError } from "../../../utils/validation";
+import { getInvalidNameError, getInvalidPasswordError, isNotEmptyString } from "../../../utils/validation";
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 const passwordError = (
   <>
@@ -25,8 +27,9 @@ function CreateAccountPage() {
   const {enteredValue: enteredPassword, valueIsValid: passwordIsValid, errorMessage: passwordErrorMessage, changeHandler: passwordChangeHandler, blurHandler: passwordBlurHandler} = useInput('', (value) => getInvalidPasswordError(value, passwordError))
   const [enteredConfirmation, setEnteredConfirmation] = useState('')
   const [confirmationIsValid, setConfirmationIsValid] = useState(true)
-  const [isLoading, setIsLoadin] = useState(false)
+  const [isLoading, setIsLoading] = useState(false)
   const [isError, setIsError] = useState(false)
+  const [isDialogOpen, setIsDialogOpen] = useState(false)
 
 
   function confirmationChangeHandler(event) {
@@ -42,15 +45,16 @@ function CreateAccountPage() {
   }
 
   function checkAllInputs() {
+    const nameOk = !isNotEmptyString(getInvalidNameError(enteredName, existingNames))
+    const passwordOk = !isNotEmptyString(getInvalidPasswordError(enteredPassword, passwordError))
+    const confirmationOk = (enteredPassword === enteredConfirmation)
     nameBlurHandler(enteredName)
     passwordBlurHandler(enteredPassword)
     confirmationBlurHandler()
 
-    if (nameIsValid && passwordIsValid && confirmationIsValid) {
-      console.log('inputs ok')
+    if (nameOk && passwordOk && confirmationOk) {
       return true
     } else {
-      console.log('inputs invalid', nameIsValid, passwordIsValid, confirmationIsValid)
       return false
     }
   }
@@ -85,11 +89,12 @@ function CreateAccountPage() {
     event.preventDefault()
 
     if (checkAllInputs()) {
-      console.log("SEND REQUEST")
+      setIsLoading(true)
+      setIsDialogOpen(true)
       
       async function sendRequest() {
         try {
-          response = await fetch(baseUrl + `users/existing-users/${enteredName}.json`, {
+          const response = await fetch(baseUrl + `users/existing-users/${enteredName}.json`, {
             method: 'PUT',
             headers: {
               "Content-Type": "application/json"
@@ -103,7 +108,10 @@ function CreateAccountPage() {
             throw new Error('Can not post user')
           }
 
+          setIsLoading(false)
+
         } catch(error) {
+          setIsLoading(false)
           setIsError(true)
         }
       }
@@ -112,8 +120,38 @@ function CreateAccountPage() {
     }
   }
 
+  function closeModalHandler(event) {
+    if (isLoading) {
+      event.preventDefault()
+      return
+    }
+
+    if (!isError) {
+      // TODO: login user
+    }
+
+    setIsLoading(false)
+    setIsError(false)
+    setIsDialogOpen(false)
+  }
+
+
+  let modalContent = <p>Hello {enteredName}! Your account has been created.</p>
+  if (isError) {
+    modalContent = <p className={styles.error}>Error occured, please try again later.</p>
+  } else if (isLoading) {
+    modalContent = <p>Loading...</p>  
+  }
+
+
   return (
     <>
+      <Modal open={isDialogOpen} onCancel={closeModalHandler}>
+        {modalContent}
+        <StyledButton as={Link} to='/flashcards-app/' isDark={true} onClick={closeModalHandler} disabled={isLoading}>
+          OK
+        </StyledButton>
+      </Modal>
       <Header />
       <form className={styles.form} onSubmit={submitHandler}>
         <h2>Create Account</h2>

@@ -7,8 +7,27 @@
   text-decoration: none;
 }
 
+.button.dark {
+  background: none;
+  border: 2px solid var(--color-cyan-dark);
+}
+
 .button:hover {
   background: linear-gradient(to right, var(--color-cyan) 30%, var(--color-violet) 100%) border-box;
+}
+
+.button.dark:hover {
+  background: var(--color-cyan-dark);
+}
+
+button:disabled,
+button[disabled],
+button:disabled:hover,
+button.dark:disabled,
+button.dark:disabled:hover {
+  background: none;
+  border: 2px solid #666666;
+  cursor: auto;
 }
 
 .button span {
@@ -20,8 +39,23 @@
   -webkit-text-fill-color: transparent;
 }
 
+.button.dark span {
+  background: var(--color-cyan-dark);
+  -webkit-background-clip: text;
+}
+
 .button:hover span {
   background: var(--color-primary-dark);
+  -webkit-background-clip: text;
+}
+
+.button.dark:hover span {
+  background: var(--color-cyan);
+  -webkit-background-clip: text;
+}
+
+.button:disabled span, .button:disabled:hover span {
+  background: #666666;;
   -webkit-background-clip: text;
 }
 
