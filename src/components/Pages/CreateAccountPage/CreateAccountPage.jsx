@@ -8,6 +8,8 @@ import useInput from "../../../utils/hooks/useInput";
 import { getInvalidNameError, getInvalidPasswordError, isNotEmptyString } from "../../../utils/validation";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { authActions } from "../../../store/auth-slice";
 
 const passwordError = (
   <>
@@ -22,6 +24,7 @@ const passwordError = (
 
 
 function CreateAccountPage() {
+  const dispatch = useDispatch()
   const [existingNames, setExistingNames] = useState([])
   const {enteredValue: enteredName, valueIsValid: nameIsValid, errorMessage: nameErrorMessage, changeHandler: nameChangeHandler, blurHandler: nameBlurHandler} = useInput('', (value) => getInvalidNameError(value, existingNames))
   const {enteredValue: enteredPassword, valueIsValid: passwordIsValid, errorMessage: passwordErrorMessage, changeHandler: passwordChangeHandler, blurHandler: passwordBlurHandler} = useInput('', (value) => getInvalidPasswordError(value, passwordError))
@@ -127,7 +130,11 @@ function CreateAccountPage() {
     }
 
     if (!isError) {
-      // TODO: login user
+      dispatch(authActions.setLoggedIn({
+        name: enteredName,
+        password: enteredPassword,
+        collections: []
+      }))
     }
 
     setIsLoading(false)

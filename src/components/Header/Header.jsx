@@ -2,8 +2,17 @@ import styles from './Header.module.css'
 import logo from '../../assets/logo.png'
 import StyledButton from '../UI/Button/StyledButton'
 import { Link } from 'react-router-dom'
+import { useDispatch, useSelector } from 'react-redux'
+import { authActions } from '../../store/auth-slice'
 
 const Header = ({logoOnly}) => {
+  const isLoggedIn = useSelector(state => state.auth.isLoggedIn)
+  const dispatch = useDispatch()
+
+  function logoutHandler() {
+    dispatch(authActions.setLoggedOut())
+  }
+
   return (
     <header className={styles['main-header']}>
       <Link to='/flashcards-app/' id={styles.title}>
@@ -12,7 +21,9 @@ const Header = ({logoOnly}) => {
       </Link>
 
       {!logoOnly && <nav>
-        <StyledButton as={Link} to='/flashcards-app/login'>Login</StyledButton>
+        {isLoggedIn ? 
+        <StyledButton as={Link} to='/flashcards-app/' onClick={logoutHandler}>Loguot</StyledButton> :
+        <StyledButton as={Link} to='/flashcards-app/login'>Login</StyledButton>}
       </nav>}
     </header>
   )
