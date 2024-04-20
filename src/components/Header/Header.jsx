@@ -22,7 +22,7 @@ const Header = ({logoOnly}) => {
 
       {!logoOnly && <nav>
         {isLoggedIn ? 
-        <StyledButton as={Link} to='/flashcards-app/' onClick={logoutHandler}>Loguot</StyledButton> :
+        <StyledButton as={Link} to='/flashcards-app/' onClick={logoutHandler}>Logout</StyledButton> :
         <StyledButton as={Link} to='/flashcards-app/login'>Login</StyledButton>}
       </nav>}
     </header>

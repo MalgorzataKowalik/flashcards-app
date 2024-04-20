@@ -132,7 +132,6 @@ function CreateAccountPage() {
     if (!isError) {
       dispatch(authActions.setLoggedIn({
         name: enteredName,
-        password: enteredPassword,
         collections: []
       }))
     }

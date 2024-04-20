@@ -20,3 +20,12 @@
 .section .error {
   color: rgb(204, 121, 121)
 }
+
+.section a {
+  text-decoration: none;
+  color: var(--color-violet)
+}
+
+.section a:hover {
+  text-decoration: underline
+}
