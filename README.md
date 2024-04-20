@@ -5,10 +5,10 @@ application for learning with flashcards
 ## Features:
 - default flashcards collections for anonymous user
 - possibility of repeating questions to which the user did not know the answers
+- account creating and logging in
 
 ## Upcoming features:
-- account creating and logging in (work in progress)
-- possibility of adding custom collections
+- possibility of adding custom collections (work in progress)
 - custom backend
 
 ## Technologies:
