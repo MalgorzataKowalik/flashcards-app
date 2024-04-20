@@ -3,23 +3,59 @@ import Input from "../../UI/Input/Input";
 import StyledButton from "../../UI/Button/StyledButton";
 import styles from './LoginPage.module.css'
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { baseUrl } from "../../../utils/consts";
+import { useDispatch } from "react-redux";
+import { authActions } from "../../../store/auth-slice";
 
 function LoginPage() {
-  const [eneteredLogin, setEnteredLogin] = useState('')
+  const dispatch = useDispatch()
+  const navigate = useNavigate()
+  const [enteredLogin, setEnteredLogin] = useState('')
   const [enteredPassword, setEnteredPassword] = useState('')
+  const [errorMessage, setErrorMessage] = useState('')
 
   function changeLoginHandler(event) {
+    setErrorMessage('')
     setEnteredLogin(event.target.value)
   }
 
   function changePasswordHandler(event) {
+    setErrorMessage('')
     setEnteredPassword(event.target.value)
   }
 
   function submitHandler(event) {
     event.preventDefault()
-    //TODO: send login requst
+    
+    async function sendRequest() {
+      try {
+        const response = await fetch(baseUrl + `users/existing-users/${enteredLogin}.json`)
+
+        if (!response.ok) {
+          throw new Error('Can not log in')
+        }
+  
+        const data = await response.json()
+        if (data && data.password === enteredPassword) {
+          dispatch(authActions.setLoggedIn({
+            name: data.name,
+            collections: data.collections
+          }))
+
+          navigate('/flashcards-app/')
+        }
+        if (!data) {
+          setErrorMessage('Invalid login or password')
+        }
+  
+        
+      } catch(error) {
+        setErrorMessage(error.message)
+      }
+    }
+
+    sendRequest()
   }
 
   return (
@@ -27,6 +63,7 @@ function LoginPage() {
       <Header logoOnly={true}/>
       <form className={styles.form} onSubmit={submitHandler}>
         <h2>Login</h2>
+        {errorMessage && <p className={styles.error}>{errorMessage}</p>}
         <div className={styles.wrapper}>
         <Input
           id="login"
@@ -35,7 +72,7 @@ function LoginPage() {
           label="Login"
           isValid={true}
           onChange={changeLoginHandler}
-          value={eneteredLogin}
+          value={enteredLogin}
           required/>
         <Input
           id="password"
