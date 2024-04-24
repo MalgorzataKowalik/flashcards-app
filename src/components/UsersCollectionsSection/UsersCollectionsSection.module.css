@@ -5,12 +5,13 @@
   align-items: center;
   align-content: center;
   gap: 1rem;
-  margin: 4rem
+  margin-bottom: 4rem;
 }
 
 .section ul {
   padding-inline-start: 0;
   margin: 0 0.5rem;
+  width: 100%;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -26,6 +27,6 @@
   color: var(--color-violet)
 }
 
-.section a:hover {
+.section p a:hover {
   text-decoration: underline
 }
