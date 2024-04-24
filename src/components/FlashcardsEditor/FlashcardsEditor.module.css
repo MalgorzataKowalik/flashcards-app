@@ -1,0 +1,48 @@
+.editor {
+  margin: 2rem auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4rem;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.form h2 {
+  text-align: center;
+  max-width: 80vw;
+}
+
+.input-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.actions {
+  display: flex;
+  gap: 1rem;
+}
+
+.cards {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.cards ul {
+  list-style: none;
+}
+
+@media (min-width: 896px) {
+  .input-wrapper {
+    flex-direction: row;
+    gap: 1rem;
+  }
+}

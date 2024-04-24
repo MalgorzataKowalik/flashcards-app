@@ -40,7 +40,7 @@ function LoginPage() {
         if (data && data.password === enteredPassword) {
           dispatch(authActions.setLoggedIn({
             name: data.name,
-            collections: data.collections
+            collections: data.collections || []
           }))
 
           navigate('/flashcards-app/')
@@ -64,25 +64,25 @@ function LoginPage() {
       <form className={styles.form} onSubmit={submitHandler}>
         <h2>Login</h2>
         {errorMessage && <p className={styles.error}>{errorMessage}</p>}
-        <div className={styles.wrapper}>
-        <Input
-          id="login"
-          name="login"
-          type="text"
-          label="Login"
-          isValid={true}
-          onChange={changeLoginHandler}
-          value={enteredLogin}
-          required/>
-        <Input
-          id="password"
-          name="password"
-          type="password"
-          label="Password"
-          isValid={true}
-          onChange={changePasswordHandler}
-          value={enteredPassword}
-          required/>
+        <div>
+          <Input
+            id="login"
+            name="login"
+            type="text"
+            label="Login"
+            isValid={true}
+            onChange={changeLoginHandler}
+            value={enteredLogin}
+            required/>
+          <Input
+            id="password"
+            name="password"
+            type="password"
+            label="Password"
+            isValid={true}
+            onChange={changePasswordHandler}
+            value={enteredPassword}
+            required/>
         </div>
 
         <StyledButton>Login</StyledButton>

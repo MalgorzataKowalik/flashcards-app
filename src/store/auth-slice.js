@@ -16,6 +16,9 @@ const authSlice = createSlice({
     setLoggedOut(state) {
       state.isLoggedIn = false
       state.userData = initialState.userData
+    },
+    addCollection(state, action) {
+      state.userData.collections.push(action.payload)
     }
   }
 })
