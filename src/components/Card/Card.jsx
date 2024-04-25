@@ -16,6 +16,10 @@ const Card = () => {
     cards: []
   })
 
+  if (!selectedCollection.cards) {
+    return <p>This collection does't containany flashcard</p>
+  }
+
   useEffect(() => {
     if (currentCardIndex === selectedCollection.cards.length) {
       dispatch(stageActions.setResultStage({
