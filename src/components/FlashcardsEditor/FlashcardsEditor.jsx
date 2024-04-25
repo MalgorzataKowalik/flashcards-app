@@ -6,7 +6,7 @@ import CardInEditor from "../CardInEditor/CardInEditor";
 import Modal from "../UI/Modal/Modal";
 import { Link, useNavigate } from "react-router-dom";
 import styles from './FlashcardsEditor.module.css'
-import { baseUrl } from "../../utils/consts";
+import { ROUTES, baseUrl } from "../../utils/consts";
 import { authActions } from "../../store/auth-slice";
 
 export default function FlashcardsEditor({collectionTitle, collectionId}) {
@@ -89,7 +89,7 @@ export default function FlashcardsEditor({collectionTitle, collectionId}) {
         }
 
         dispatch(authActions.addCollection(newCollection))
-        navigate('/flashcards-app/')
+        navigate(ROUTES.HOME)
       } catch(error) {
         setIsError(true)
       }
@@ -106,7 +106,7 @@ export default function FlashcardsEditor({collectionTitle, collectionId}) {
     <>
       <Modal open={isError} onCancel={closeModalHandler}>
         <p className={styles.error}>Error occured, please try again later.</p>
-        <StyledButton as={Link} to='/flashcards-app/' isDark={true} onClick={closeModalHandler}>
+        <StyledButton as={Link} to={ROUTES.HOME} isDark={true} onClick={closeModalHandler}>
           OK
         </StyledButton>
       </Modal>

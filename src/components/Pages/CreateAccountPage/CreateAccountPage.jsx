@@ -3,7 +3,7 @@ import Input from "../../UI/Input/Input";
 import StyledButton from "../../UI/Button/StyledButton";
 import Modal from "../../UI/Modal/Modal";
 import styles from './CreateAccountPage.module.css'
-import { baseUrl } from "../../../utils/consts";
+import { ROUTES, baseUrl } from "../../../utils/consts";
 import useInput from "../../../utils/hooks/useInput";
 import { getInvalidNameError, getInvalidPasswordError, isNotEmptyString } from "../../../utils/validation";
 import { useEffect, useState } from "react";
@@ -156,7 +156,7 @@ function CreateAccountPage() {
     <>
       <Modal open={isDialogOpen} onCancel={closeModalHandler}>
         {modalContent}
-        <StyledButton as={Link} to='/flashcards-app/' isDark={true} onClick={closeModalHandler} disabled={isLoading}>
+        <StyledButton as={Link} to={ROUTES.HOME} isDark={true} onClick={closeModalHandler} disabled={isLoading}>
           OK
         </StyledButton>
       </Modal>

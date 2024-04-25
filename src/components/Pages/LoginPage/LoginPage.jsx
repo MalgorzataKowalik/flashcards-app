@@ -4,7 +4,7 @@ import StyledButton from "../../UI/Button/StyledButton";
 import styles from './LoginPage.module.css'
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { baseUrl } from "../../../utils/consts";
+import { ROUTES, baseUrl } from "../../../utils/consts";
 import { useDispatch } from "react-redux";
 import { authActions } from "../../../store/auth-slice";
 
@@ -45,7 +45,7 @@ function LoginPage() {
 
           localStorage.setItem('user', data.name)
 
-          navigate('/flashcards-app/')
+          navigate(ROUTES.HOME)
         } else {
           setErrorMessage('Invalid login or password')
         }
@@ -89,7 +89,7 @@ function LoginPage() {
         <StyledButton>Login</StyledButton>
         <p className={styles["create-account"]}>
           <span>New to flashcards?</span>
-          <Link to="/flashcards-app/create-account">Create an account.</Link>
+          <Link to="/create-account">Create an account.</Link>
         </p>
         
       </form>
