@@ -1,9 +1,9 @@
-import { RouterProvider, createBrowserRouter } from "react-router-dom";
+import { RouterProvider, createHashRouter } from "react-router-dom";
 import HomePage from "./components/Pages/HomePage/HomePage";
 import LoginPage from "./components/Pages/LoginPage/LoginPage";
 import CreateAccountPage from "./components/Pages/CreateAccountPage/CreateAccountPage";
 import NewCollectionPage from "./components/Pages/NewCollectionPage/NewCollectionPage";
-import { baseUrl } from "./utils/consts";
+import { ROUTES, baseUrl } from "./utils/consts";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { authActions } from "./store/auth-slice";
@@ -33,11 +33,11 @@ function App() {
     }
   }
 
-  const router = createBrowserRouter([
-    {path: '/flashcards-app/', element: <HomePage/>},
-    {path: '/flashcards-app/login', element: <LoginPage/>},
-    {path: '/flashcards-app/create-account', element: <CreateAccountPage/>},
-    {path: '/flashcards-app/new-collection', element: <NewCollectionPage/>}
+  const router = createHashRouter([
+    {path: ROUTES.HOME, element: <HomePage/>},
+    {path: ROUTES.LOGIN, element: <LoginPage/>},
+    {path: ROUTES.CREATE_ACCOUNT, element: <CreateAccountPage/>},
+    {path: ROUTES.NEW_COLLECTION, element: <NewCollectionPage/>}
   ])
 
   return (

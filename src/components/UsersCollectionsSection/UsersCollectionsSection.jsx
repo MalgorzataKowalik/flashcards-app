@@ -8,7 +8,7 @@ export default function UsersCollectionsSection() {
   const isLoggedIn = useSelector(state => state.auth.isLoggedIn)
   const collections = useSelector(state => state.auth.userData.collections)
 
-  let content = <p><Link to="/flashcards-app/login">Log in</Link> to add your own collections</p>
+  let content = <p><Link to="/login">Log in</Link> to add your own collections</p>
   if (isLoggedIn) {
     collections ?
     content = (
@@ -23,7 +23,7 @@ export default function UsersCollectionsSection() {
     <section className={styles.section}>
       <h3>YOUR COLLECTIONS</h3>
       {content}
-      {isLoggedIn && <StyledButton as={Link} to={`/flashcards-app/${isLoggedIn ? 'new-collection' : 'login'}`}>+ Add collection</StyledButton>}
+      {isLoggedIn && <StyledButton as={Link} to={`/${isLoggedIn ? 'new-collection' : 'login'}`}>+ Add collection</StyledButton>}
     </section>
   )
 }
