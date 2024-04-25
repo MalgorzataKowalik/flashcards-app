@@ -11,6 +11,8 @@ const Header = ({logoOnly}) => {
 
   function logoutHandler() {
     dispatch(authActions.setLoggedOut())
+
+    localStorage.removeItem('user')
   }
 
   return (

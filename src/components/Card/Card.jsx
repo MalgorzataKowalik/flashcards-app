@@ -17,7 +17,7 @@ const Card = () => {
   })
 
   if (!selectedCollection.cards) {
-    return <p>This collection does't containany flashcard</p>
+    return <p>This collection does't contain any flashcard</p>
   }
 
   useEffect(() => {
