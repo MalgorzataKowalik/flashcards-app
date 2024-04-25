@@ -43,9 +43,10 @@ function LoginPage() {
             collections: data.collections || []
           }))
 
+          localStorage.setItem('user', data.name)
+
           navigate('/flashcards-app/')
-        }
-        if (!data) {
+        } else {
           setErrorMessage('Invalid login or password')
         }
   

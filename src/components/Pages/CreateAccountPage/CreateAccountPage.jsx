@@ -134,6 +134,8 @@ function CreateAccountPage() {
         name: enteredName,
         collections: []
       }))
+
+      localStorage.setItem('user', enteredName)
     }
 
     setIsLoading(false)
