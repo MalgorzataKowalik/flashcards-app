@@ -6,9 +6,12 @@ application for learning with flashcards
 - default flashcards collections for anonymous user
 - possibility of repeating questions to which the user did not know the answers
 - account creating and logging in
+- adding custom collections
 
 ## Upcoming features:
-- possibility of adding custom collections (work in progress)
+- adding cards to existing collections (work in progress)
+- removing cards
+- removing collections
 - custom backend
 
 ## Technologies:
