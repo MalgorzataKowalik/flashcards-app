@@ -160,7 +160,6 @@ function CreateAccountPage() {
           OK
         </StyledButton>
       </Modal>
-      <Header />
       <form className={styles.form} onSubmit={submitHandler}>
         <h2>Create Account</h2>
         <div className={styles.wrapper}>

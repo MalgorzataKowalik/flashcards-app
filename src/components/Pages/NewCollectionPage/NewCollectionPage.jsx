@@ -21,7 +21,6 @@ export default function NewCollectionPage() {
 
   return (
     <>
-      <Header/>
       {
         enteredCollectionTitle ?
         <FlashcardsEditor collectionTitle={enteredCollectionTitle} collectionId={collectionId}/> :

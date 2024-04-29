@@ -60,40 +60,37 @@ function LoginPage() {
   }
 
   return (
-    <>
-      <Header logoOnly={true}/>
-      <form className={styles.form} onSubmit={submitHandler}>
-        <h2>Login</h2>
-        {errorMessage && <p className={styles.error}>{errorMessage}</p>}
-        <div>
-          <Input
-            id="login"
-            name="login"
-            type="text"
-            label="Login"
-            isValid={true}
-            onChange={changeLoginHandler}
-            value={enteredLogin}
-            required/>
-          <Input
-            id="password"
-            name="password"
-            type="password"
-            label="Password"
-            isValid={true}
-            onChange={changePasswordHandler}
-            value={enteredPassword}
-            required/>
-        </div>
+    <form className={styles.form} onSubmit={submitHandler}>
+      <h2>Login</h2>
+      {errorMessage && <p className={styles.error}>{errorMessage}</p>}
+      <div>
+        <Input
+          id="login"
+          name="login"
+          type="text"
+          label="Login"
+          isValid={true}
+          onChange={changeLoginHandler}
+          value={enteredLogin}
+          required/>
+        <Input
+          id="password"
+          name="password"
+          type="password"
+          label="Password"
+          isValid={true}
+          onChange={changePasswordHandler}
+          value={enteredPassword}
+          required/>
+      </div>
 
-        <StyledButton>Login</StyledButton>
-        <p className={styles["create-account"]}>
-          <span>New to flashcards?</span>
-          <Link to="/create-account">Create an account.</Link>
-        </p>
-        
-      </form>
-    </>
+      <StyledButton>Login</StyledButton>
+      <p className={styles["create-account"]}>
+        <span>New to flashcards?</span>
+        <Link to="/create-account">Create an account.</Link>
+      </p>
+      
+    </form>
   );
 }
 
