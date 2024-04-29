@@ -6,7 +6,6 @@ import Card from '../../Card/Card'
 import SectionWithBack from '../../UI/SectionWithBack/SectionWithBack';
 import Result from '../../Result/Result';
 import { stages, stageActions } from '../../../store/stage-slice'
-import styles from './HomePage.module.css'
 import UsersCollectionsSection from '../../UsersCollectionsSection/UsersCollectionsSection';
 
 function HomePage() {
@@ -17,25 +16,16 @@ function HomePage() {
     dispatch(stageActions.setDefaultStage()) //TODO: consider this
   }, [])
 
-  let mainContent = (
-    <>
-      <UsersCollectionsSection/>
-      <DefaultCollectionsSection/>
-    </>
-  )
-
   if (stageData.stage === stages.cards) {
-    mainContent = <SectionWithBack><Card/></SectionWithBack>
+    return <SectionWithBack><Card/></SectionWithBack>
   } else if (stageData.stage === stages.result) {
-    mainContent = <SectionWithBack><Result/></SectionWithBack>
+    return <SectionWithBack><Result/></SectionWithBack>
   }
 
   return (
     <>
-      <Header/>
-      <main className={styles.main}>
-        {mainContent}
-      </main>
+      <UsersCollectionsSection/>
+      <DefaultCollectionsSection/>
     </>
   );
 }
