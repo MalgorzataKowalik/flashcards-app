@@ -33,7 +33,7 @@ function LoginPage() {
         const response = await fetch(baseUrl + `users/existing-users/${enteredLogin}.json`)
 
         if (!response.ok) {
-          throw new Error('Can not log in')
+          throw new Error('Something went wrong. Please try again later.')
         }
   
         const data = await response.json()
