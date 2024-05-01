@@ -70,7 +70,7 @@ function CreateAccountPage() {
         const response = await fetch(baseUrl + 'users/existing-users.json')
 
         if (!response.ok) {
-          throw new Error('Can not fetch existing users')
+          throw new Error('Something went wrong. Please try again later.')
         }
 
         const resData = await response.json()
@@ -108,7 +108,7 @@ function CreateAccountPage() {
             })
           })
           if (!response.ok) {
-            throw new Error('Can not post user')
+            throw new Error('Something went wrong. Please try again later.')
           }
 
           setIsLoading(false)

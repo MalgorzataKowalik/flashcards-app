@@ -8,6 +8,7 @@ import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { authActions } from "./store/auth-slice";
 import RootLayout from "./components/Pages/RootLayout/RootLayout";
+import ErrorPage from "./components/Pages/ErrorPage/ErrorPage";
 
 
 function App() {
@@ -38,6 +39,7 @@ function App() {
     {
       path: ROUTES.HOME,
       element: <RootLayout/>,
+      errorElement: <ErrorPage/>,
       children: [
         {index: true, element: <HomePage/>},
         {path: ROUTES.LOGIN, element: <LoginPage/>},

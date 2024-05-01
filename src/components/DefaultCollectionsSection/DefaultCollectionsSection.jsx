@@ -15,7 +15,7 @@ const DefaultCollectionsSection = () => {
         const response = await fetch(baseUrl + 'anonymous.json')
     
         if (!response.ok) {
-          throw new Error
+          throw new Error('An error occured. Default collections can not be feth. Please try again later.')
         }
 
         setDefaultCollectionStatus('success')

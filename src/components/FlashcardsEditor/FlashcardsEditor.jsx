@@ -85,7 +85,7 @@ export default function FlashcardsEditor({collectionTitle, collectionId}) {
         })
 
         if (!response.ok) {
-          throw new Error('Can not post user')
+          throw new Error('An error occured. Can not save changes.')
         }
 
         dispatch(authActions.addCollection(newCollection))
