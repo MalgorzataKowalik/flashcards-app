@@ -7,7 +7,7 @@ import { ROUTES, baseUrl } from "../../../utils/consts";
 import useInput from "../../../utils/hooks/useInput";
 import { getInvalidNameError, getInvalidPasswordError, isNotEmptyString } from "../../../utils/validation";
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, json, useLoaderData } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { authActions } from "../../../store/auth-slice";
 
@@ -25,7 +25,7 @@ const passwordError = (
 
 function CreateAccountPage() {
   const dispatch = useDispatch()
-  const [existingNames, setExistingNames] = useState([])
+  const existingNames = useLoaderData()
   const {enteredValue: enteredName, valueIsValid: nameIsValid, errorMessage: nameErrorMessage, changeHandler: nameChangeHandler, blurHandler: nameBlurHandler} = useInput('', (value) => getInvalidNameError(value, existingNames))
   const {enteredValue: enteredPassword, valueIsValid: passwordIsValid, errorMessage: passwordErrorMessage, changeHandler: passwordChangeHandler, blurHandler: passwordBlurHandler} = useInput('', (value) => getInvalidPasswordError(value, passwordError))
   const [enteredConfirmation, setEnteredConfirmation] = useState('')
@@ -64,28 +64,6 @@ function CreateAccountPage() {
 
   useEffect(confirmationBlurHandler, [enteredPassword])
 
-  useEffect(() => {
-    async function fetchNames() {
-      try {
-        const response = await fetch(baseUrl + 'users/existing-users.json')
-
-        if (!response.ok) {
-          throw new Error('Something went wrong. Please try again later.')
-        }
-
-        const resData = await response.json()
-        const names = []
-        for (const name in resData) {
-          names.push(name)
-        }
-        setExistingNames(names)
-      } catch(error) {
-        setExistingNames(null)
-      }
-    }
-
-    fetchNames()
-  }, [])
 
 
   function submitHandler(event) {
@@ -205,3 +183,21 @@ function CreateAccountPage() {
 }
 
 export default CreateAccountPage
+
+export async function existingNamesLoader() {
+  const response = await fetch(baseUrl + 'users/existing-users.json')
+
+  if (!response.ok) {
+    throw new Error('Something went wrong. Please try again later.')
+  }
+
+  const resData = await response.json()
+  const names = []
+  for (const name in resData) {
+    names.push(name)
+  }
+
+  return json({
+    names: names
+  })
+}
