@@ -9,12 +9,12 @@ import { useDispatch } from "react-redux";
 import { authActions } from "./store/auth-slice";
 import RootLayout from "./components/Pages/RootLayout/RootLayout";
 import ErrorPage from "./components/Pages/ErrorPage/ErrorPage";
+import { action as loginAction } from './components/Pages/LoginPage/LoginPage'
 
 
 function App() {
   const dispatch = useDispatch()
   useEffect(() => {
-    console.log('checking local storage')
     const user = localStorage.getItem('user')
     if (user) {
       getUser(user)
@@ -42,7 +42,7 @@ function App() {
       errorElement: <ErrorPage/>,
       children: [
         {index: true, element: <HomePage/>},
-        {path: ROUTES.LOGIN, element: <LoginPage/>},
+        {path: ROUTES.LOGIN, element: <LoginPage/>, action: loginAction(dispatch)},
         {path: ROUTES.CREATE_ACCOUNT, element: <CreateAccountPage/>},
         {path: ROUTES.NEW_COLLECTION, element: <NewCollectionPage/>}
       ]
