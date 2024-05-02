@@ -1,5 +1,4 @@
 import { useState } from "react";
-import Header from "../../Header/Header";
 import NewCollectionForm from "../../NewCollectionForm/NewCollectionForm";
 import FlashcardsEditor from "../../FlashcardsEditor/FlashcardsEditor";
 import { useSelector } from "react-redux";

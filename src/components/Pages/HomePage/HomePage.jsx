@@ -1,7 +1,6 @@
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from "react-redux";
 import DefaultCollectionsSection from "../../DefaultCollectionsSection/DefaultCollectionsSection";
-import Header from "../../Header/Header";
 import Card from '../../Card/Card'
 import SectionWithBack from '../../UI/SectionWithBack/SectionWithBack';
 import Result from '../../Result/Result';
