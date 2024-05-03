@@ -1,3 +1,10 @@
+const passwordErrorText = `<span>Password must</span>
+<span>• be 8 to 15 characters long,</span>
+<span>• contain no spaces,</span>
+<span>• contain at least one lowercase letter and at least one uppercase letter,</span>
+<span>• contain at least one number,</span>
+<span>• contain at least one special character.</span>`
+
 export function isNotEmptyString(value) {
   if (!(typeof value === 'string')) {
     return true
@@ -14,9 +21,9 @@ export function isNameRegexMatch(value) {
   return regex.test(value);
 }
 
-export function getInvalidPasswordError(value, passwordError) {
+export function getInvalidPasswordError(value) {
   if (!isValidPassword(value)) {
-    return passwordError
+    return passwordErrorText
   }
   
   return ''
@@ -38,5 +45,6 @@ export function getInvalidNameError(value, names) {
 
   return ''
 }
+
 
 

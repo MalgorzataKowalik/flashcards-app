@@ -12,7 +12,7 @@ export default function Input({id, label, isValid, errorText, className, isTextA
           id={id}
           {...props}/>}
       <div className={styles.error}>
-        {!isValid && <p>{errorText}</p>}
+        {!isValid && <p dangerouslySetInnerHTML={{__html: errorText}}></p>}
       </div>
     </div>
   )
