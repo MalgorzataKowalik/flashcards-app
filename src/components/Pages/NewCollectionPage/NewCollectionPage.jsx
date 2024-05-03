@@ -1,13 +1,14 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import NewCollectionForm from "../../NewCollectionForm/NewCollectionForm";
 import FlashcardsEditor from "../../FlashcardsEditor/FlashcardsEditor";
 import { useSelector } from "react-redux";
+import { useActionData } from "react-router-dom";
 
 
 export default function NewCollectionPage() {
   const collections = useSelector(state => state.auth.userData.collections)
   const userName = useSelector(state => state.auth.userData.name)
-  const [enteredCollectionTitle, setEnteredCollectionTitle] = useState('')
+  const collectionTitle = useActionData()
 
   let collectionId
   if (collections) {
@@ -21,10 +22,16 @@ export default function NewCollectionPage() {
   return (
     <>
       {
-        enteredCollectionTitle ?
-        <FlashcardsEditor collectionTitle={enteredCollectionTitle} collectionId={collectionId}/> :
-        <NewCollectionForm onCollectionTitleSubmit={setEnteredCollectionTitle}/>
+        collectionTitle ?
+        <FlashcardsEditor collectionTitle={collectionTitle} collectionId={collectionId}/> :
+        <NewCollectionForm/>
       }
     </>
   )
+}
+
+export async function newCollectionAction({request}) {
+  const formData = await request.formData();
+  const collectionTitle = formData.get('collection-title')
+  return collectionTitle
 }
