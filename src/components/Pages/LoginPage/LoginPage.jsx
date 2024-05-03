@@ -3,13 +3,11 @@ import { ROUTES, baseUrl } from "../../../utils/consts";
 import LoginForm from "../../LoginForm/LoginForm";
 import { authActions } from "../../../store/auth-slice";
 
-function LoginPage() {
+export default function LoginPage() {
   return (
     <LoginForm/>
   );
 }
-
-export default LoginPage
 
 export const action = (dispatch) => async function ({request}) {
   const formData = await request.formData();
