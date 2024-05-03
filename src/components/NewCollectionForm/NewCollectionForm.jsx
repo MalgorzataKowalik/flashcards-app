@@ -1,17 +1,11 @@
+import { Form } from "react-router-dom";
 import StyledButton from "../UI/Button/StyledButton";
 import Input from "../UI/Input/Input";
 import styles from './NewCollectionForm.module.css'
 
-export default function NewCollectionForm({onCollectionTitleSubmit}) {
-  function titleSubmitHandler(event) {
-    event.preventDefault()
-    const formData = new FormData(event.target);
-    const inputsData = Object.fromEntries(formData.entries())
-    onCollectionTitleSubmit(inputsData['collection-title'].trim())
-  }
-
+export default function NewCollectionForm() {
   return (
-    <form className={styles.form} onSubmit={titleSubmitHandler}>
+    <Form method='post' className={styles.form}>
       <Input
         className='wide'
         id="collection-title"
@@ -22,6 +16,6 @@ export default function NewCollectionForm({onCollectionTitleSubmit}) {
         maxLength="60"
         required/>
       <StyledButton>OK</StyledButton>
-    </form>
+    </Form>
   )
 }

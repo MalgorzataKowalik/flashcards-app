@@ -2,7 +2,7 @@ import { RouterProvider, createHashRouter } from "react-router-dom";
 import HomePage from "./components/Pages/HomePage/HomePage";
 import LoginPage from "./components/Pages/LoginPage/LoginPage";
 import CreateAccountPage, { existingNamesLoader, action as createAccountAction } from "./components/Pages/CreateAccountPage/CreateAccountPage";
-import NewCollectionPage from "./components/Pages/NewCollectionPage/NewCollectionPage";
+import NewCollectionPage, { newCollectionAction } from "./components/Pages/NewCollectionPage/NewCollectionPage";
 import { ROUTES, baseUrl } from "./utils/consts";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
@@ -44,7 +44,7 @@ function App() {
         {index: true, element: <HomePage/>},
         {path: ROUTES.LOGIN, element: <LoginPage/>, action: loginAction(dispatch)},
         {path: ROUTES.CREATE_ACCOUNT, element: <CreateAccountPage/>, loader: existingNamesLoader, action: createAccountAction},
-        {path: ROUTES.NEW_COLLECTION, element: <NewCollectionPage/>}
+        {path: ROUTES.NEW_COLLECTION, element: <NewCollectionPage/>, action: newCollectionAction}
       ]
     },
   ])
