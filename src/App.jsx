@@ -10,6 +10,7 @@ import { authActions } from "./store/auth-slice";
 import RootLayout from "./components/Pages/RootLayout/RootLayout";
 import ErrorPage from "./components/Pages/ErrorPage/ErrorPage";
 import { action as loginAction } from './components/Pages/LoginPage/LoginPage'
+import { checkAuthLoader } from "./utils/checkAuthLoader";
 
 
 function App() {
@@ -44,7 +45,7 @@ function App() {
         {index: true, element: <HomePage/>},
         {path: ROUTES.LOGIN, element: <LoginPage/>, action: loginAction(dispatch)},
         {path: ROUTES.CREATE_ACCOUNT, element: <CreateAccountPage/>, loader: existingNamesLoader, action: createAccountAction},
-        {path: ROUTES.NEW_COLLECTION, element: <NewCollectionPage/>, action: newCollectionAction}
+        {path: ROUTES.NEW_COLLECTION, element: <NewCollectionPage/>, action: newCollectionAction, loader: checkAuthLoader}
       ]
     },
   ])
